@@ -1,0 +1,54 @@
+<%= render 'admin/homes/header' %>
+<div>
+  <h3>商品新規登録</h3>
+  <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+    <div>
+      <%= f.label :商品画像 %>
+      <%= f.attachment_field :image %>
+    </div>
+    
+    <div>
+      <%= f.label :商品名 %>
+      <%= f.text_field :name %>
+    </div>
+    
+    <div>
+      <%= f.label :ジャンル %>
+      <%= f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] }, :prompt => true %>
+    </div>
+    
+    <div>
+      <%= f.label :アーティスト %>
+      <%= f.select :artist_id, Artist.all.map { |artist| [artist.name, artist.id] }, :prompt => true %>
+    </div>
+    
+    <div>
+      <%= f.label :レーベル %>
+      <%= f.select :label_id, Label.all.map { |label| [label.name, label.id] }, :prompt => true %>
+    </div>
+    
+    <div>
+      <%= f.label :税抜価格 %>
+      <%= f.text_field :price %>
+    </div>
+    
+    <div>
+      <%= f.label :発売日 %>
+      <%= f.text_field :publish_date %>
+    </div>
+    
+    <div>
+      <%= f.label :販売ステータス %>
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, '販売中', value: true %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, '販売停止中', value: false %>
+    </div>
+    
+    <div>
+      <%= f.submit '新規登録' %>
+    </div>
+
+
+  <% end %>
+</div>

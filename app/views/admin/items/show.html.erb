@@ -1,0 +1,14 @@
+<%= render 'admin/homes/header' %>
+<div>
+  <%= @item.name %>
+  <%= attachment_image_tag @item, :image, :fill, 60, 60 %>
+  <%= @item.price %>円
+  <%= @item.artist.name %>
+  <%= @item.genre.name %>
+  <%= @item.label.name %>
+  <% if @item.is_active? %>
+    <p>販売中</p>
+  <% else %>
+    <p>販売停止中</p>
+  <% end %>
+</div>
