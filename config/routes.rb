@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       sessions: 'public/end_users/sessions',
       registrations: 'public/end_users/registrations'
     }
+    resources :items, only: [:index, :show]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :create, :destroy]
   end
   
   devise_for :admin, controllers: {
@@ -24,6 +27,8 @@ Rails.application.routes.draw do
     resources :artists, only: [:index, :create, :edit, :update, :destroy]
     resources :labels, only: [:index, :create, :edit, :update, :destroy]
     resources :items, except: [:destroy]
+    resources :discs, except: [:index, :destroy]
+    resources :songs, except: [:index, :destroy]
   end
   
   

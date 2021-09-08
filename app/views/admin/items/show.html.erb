@@ -6,9 +6,21 @@
   <%= @item.artist.name %>
   <%= @item.genre.name %>
   <%= @item.label.name %>
+  <% @discs.each do |disc| %>
+    <%= link_to '収録ディスク', admin_disc_path(disc) %>
+  <% end %>
   <% if @item.is_active? %>
     <p>販売中</p>
   <% else %>
     <p>販売停止中</p>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model: @disc, url: admin_discs_path, local:true do |f| %>
+    <%= f.label :ディスク番号 %>
+    <%= f.number_field :sort, min: 1 %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <%= f.submit '登録' %>
   <% end %>
 </div>

@@ -1,0 +1,20 @@
+<%= render 'public/homes/header' %>
+<div>
+  <div>
+    <%= attachment_image_tag @item, :image, :fill, 200, 150 %>
+  </div>
+  
+  <div>
+    <h3><%= @item.name %></h3>
+    <% tax=@item.price*(1+0.1) %>
+    ¥<%= tax.round %>(税込)
+  </div>
+  
+  <div>
+    <%= form_with model: @cart_item, url: cart_items_path, method: :post, local:true do |f| %>
+      <%= f.hidden_field :item_id, value: @item.id %>
+      <%= f.number_field :amount, min: 1, value: 1 %>個
+      <%= f.submit 'カートに入れる' %>
+    <% end %>
+  </div>
+</div>

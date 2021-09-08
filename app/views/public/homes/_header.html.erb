@@ -7,14 +7,14 @@
       <span>ようこそ<%= current_end_user.last_name %>さん！</span>
       <ul>
         <%= link_to 'マイページ', end_users_mypage_path %>
-        <%= link_to '商品一覧', root_path %>
+        <%= link_to '商品一覧', items_path %>
         <%= link_to 'カート', root_path %>
         <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %>
       </ul>
     <% else %>
       <ul>
         <%= link_to 'About', about_path %>
-        <%= link_to '商品一覧', root_path %>
+        <%= link_to '商品一覧', items_path %>
         <%= link_to '新規登録', new_end_user_registration_path %>
         <%= link_to 'ログイン', new_end_user_session_path %>
       </ul>

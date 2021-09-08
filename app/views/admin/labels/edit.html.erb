@@ -1,0 +1,11 @@
+<%= render 'admin/homes/header' %>
+<div>
+  <h3>レーベル名編集</h3>
+  <div>
+    <%= form_with model:@label, url: admin_label_path(@label), method: :patch, local:true do |f| %>
+      <%= f.label :レーベル名 %>
+      <%= f.text_field :name %>
+      <%= f.submit '編集' %>
+    <% end %>
+  </div>
+</div>
